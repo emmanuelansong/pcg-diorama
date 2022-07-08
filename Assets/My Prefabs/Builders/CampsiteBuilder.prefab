@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4300614629333220227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4300614629333220225}
+  - component: {fileID: 4300614629333220224}
+  m_Layer: 0
+  m_Name: CampsiteBuilder
+  m_TagString: Building
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 0
+--- !u!4 &4300614629333220225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300614629333220227}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4300614629333220224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300614629333220227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38d0e7ccb8414d458e21a41874581e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  campsites:
+  - {fileID: 8824843967272461019, guid: 66355ad9e6b5cf0428adc713a25c6a85, type: 3}
+  - {fileID: 6272524831367948074, guid: 29751d957b5110c4b986d987ec3f7c67, type: 3}
+  - {fileID: 105992, guid: 7eedc0233bd2aa0409abfc062aaa8824, type: 3}
+  - {fileID: 113920, guid: defd5a45ea96582489e8ca166b5a0e4f, type: 3}
+  - {fileID: 123520, guid: 51bcb9081508a8644a8eabc58c08e055, type: 3}
+  - {fileID: 151190, guid: e679b61532759764ca61a7d2a757b4d8, type: 3}
+  - {fileID: 169714, guid: d68dfe1d0ec5969468f562154228f891, type: 3}
+  misc:
+  - {fileID: 193030, guid: 29444c582cbccca46a7d5b597c9dd6cc, type: 3}
+  - {fileID: 172250, guid: 949c9477ec7966d419b91ff78aadb2f5, type: 3}
+  - {fileID: 180410, guid: 1e54abf63a496e74e99907e887cc9b6b, type: 3}
+  - {fileID: 147188, guid: fa6f293300a85fb43a3dd925800dbdec, type: 3}
+  - {fileID: 102100, guid: c460c06a98ed6d7449f304991c466cad, type: 3}
+  - {fileID: 175894, guid: 969677c73aad12c418d07d083ea8b268, type: 3}
+  - {fileID: 156688, guid: 7750c33cd3b99c24a9ea19c640a632fe, type: 3}
+  - {fileID: 189024, guid: 476f0c4a30ef47e48b195c51f105d39f, type: 3}
+  - {fileID: 139450, guid: b25a0d2dceadda144afb3673cbc15fcd, type: 3}
+  angle: 0
+  radius: 5
+  noOfMisc: 10
