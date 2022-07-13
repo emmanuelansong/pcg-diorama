@@ -6,17 +6,21 @@ using System.Linq;
 public class GridGen : MonoBehaviour
 {
     [System.Serializable]
-    public class Agent
+    public class Room
     {
-        public Agent(Transform agent, List<Transform> neighbours = null, Vector3 dir = new Vector3())
+        public Room(Transform room, List<Transform> neighbours = null, Vector3 dir = new Vector3(), float area = 0)
         {
-            this.agent = agent;
+            this.room = room;
             this.neighbours = neighbours;
             this.dir = dir;
+            this.area = area;
         }
-        public Transform agent;
+        public Transform room;
         public List<Transform> neighbours;
         public Vector3 dir;
+        public float area;
+
+        
     }
 
    
@@ -27,22 +31,23 @@ public class GridGen : MonoBehaviour
     public float radius;
     public GameObject cube;
 
-    public List<Agent> agents;
-    List<Transform> context;
+    public List<Room> rooms;
+    public List<Transform> roomsTransform;
+    public float percentageOfMainRooms = 0.3f;
+
     void Start()
     {
 
         //CreateRoomsInRadius(minSize,maxSize,radius);
         
         CreateRoomsInRadius();
-        
-        
     }
     private void Update()
     {
-        foreach (Agent agent in agents)
+        foreach (Room room in rooms)
         {
-            GetNearbyObjects(agent);
+            GetNearbyObjectsAndMove(room);
+            
         }
     }
     void CreateRoomsInRadius()
@@ -51,58 +56,61 @@ public class GridGen : MonoBehaviour
        
         for (int i = 0; i < count; i++)
         {
-            Vector3 pos = new Vector3(RandomPointInRadius(radius).x, 0, RandomPointInRadius(radius).z);
-
+            //Vector3 pos = new Vector3(RandomPointInRadius(radius).x, 0, RandomPointInRadius(radius).z);
+            Vector2 pos = new Vector2(Random.insideUnitCircle.x, Random.insideUnitCircle.y);
             int randomScaleX = Random.Range(minSize, maxSize);
             int randomScaleZ = Random.Range(minSize, maxSize);
             int randomScaleY = Random.Range(minSize, maxSize);
 
             GameObject block = Instantiate(cube, pos, Quaternion.identity);
 
-            block.transform.localScale = new Vector3(randomScaleX, randomScaleY, randomScaleZ);
+            block.transform.localScale = new Vector3(randomScaleX, randomScaleY, 1);
                 
             block.transform.SetParent(this.transform);
 
-            agents.Add(new Agent(block.transform));
+            rooms.Add(new Room(block.transform));
         }
         
         
         
     }
-    public void GetNearbyObjects(Agent agent)
+    public void GetNearbyObjectsAndMove(Room room)
     {
-        float boxX = agent.agent.GetComponent<MeshRenderer>().bounds.size.x;
-        float boxY = agent.agent.GetComponent<MeshRenderer>().bounds.size.y;
-        float boxZ = agent.agent.GetComponent<MeshRenderer>().bounds.size.z;
+        float boxX = room.room.GetComponent<MeshRenderer>().bounds.size.x;
+        float boxY = room.room.GetComponent<MeshRenderer>().bounds.size.y;
+        float boxZ = room.room.GetComponent<MeshRenderer>().bounds.size.z;
 
-        List<Collider> colliders = Physics.OverlapBox(agent.agent.position, new Vector3(boxX/2, boxY/2, boxZ/2)).ToList();
+        List<Collider> colliders = Physics.OverlapBox(room.room.position, new Vector3(boxX/2, boxY/2, boxZ/2)).ToList();
 
-        agent.neighbours = new List<Transform>();
+        room.neighbours = new List<Transform>();
         foreach(Collider c in colliders)
         {
-            if(c != agent.agent.transform.GetComponent<Collider>())
+            if(c != room.room.transform.GetComponent<Collider>())
             {
-                agent.neighbours.Add(c.transform);
+                room.neighbours.Add(c.transform);
                 
-                if (agent.neighbours.Count > 0)
+                if(room.neighbours.Count > 0)
                 {
-                    agent.dir = c.transform.position - agent.agent.position;
-                    agent.agent.Translate(agent.dir * -.1f * Time.deltaTime);
+                    room.dir = c.transform.position - room.room.position;
+                    room.room.Translate(room.dir * -.1f);
+                    break;
                 }
-                
             }
             
         }
     }
+   
 
-
-Vector3 RandomPointInRadius(float radius)
+   /* public void IdentifyMainRooms()
     {
-        Vector3 refPoint = transform.position;
-        var sample = refPoint + Random.insideUnitSphere * radius;
+        roomsTransform = new List<Transform>();
+        rooms.Sort((Room a, Room b) =>
+        {
+            return GetRoomArea(a).CompareTo(GetRoomArea(b));
+        });
 
-        return sample;
-    }
+    }*/
+
 
 }
 

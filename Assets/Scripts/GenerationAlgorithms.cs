@@ -37,6 +37,7 @@ public class GenerationAlgorithms : MonoBehaviour
 	public List<Vector3> GeneratePoints(float radius, Vector3 sampleRegionSize, int numSamplesBeforeRejection = 30)
 	{
 		//square grid
+		
 		float cellSize = radius / Mathf.Sqrt(2);
 
 		//number of times the cell size fits into sample region
