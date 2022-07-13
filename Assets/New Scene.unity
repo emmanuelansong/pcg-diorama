@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328426869}
   - component: {fileID: 328426870}
+  - component: {fileID: 328426871}
   m_Layer: 0
   m_Name: gridgen
   m_TagString: Untagged
@@ -173,8 +174,21 @@ MonoBehaviour:
   radius: 10
   cube: {fileID: 750615613961110059, guid: e01ac8ffcda25cf4287b51c7e14a356f, type: 3}
   rooms: []
-  mainRooms: []
+  roomsTransform: []
   percentageOfMainRooms: 0.3
+--- !u!114 &328426871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328426867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb8ad5c06480614ba8d86926b87b09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 750615613961110059, guid: 1ff7b25e7272eb547be4d7634e9deb37, type: 3}
 --- !u!1 &369135751
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,8 +265,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369135751}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 83.5, z: 0}
+  m_LocalRotation: {x: 0.07584864, y: -0.0077289576, z: 0.0007089544, w: 0.9970892}
+  m_LocalPosition: {x: 0.8652487, y: 8.551462, z: -75.87513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
