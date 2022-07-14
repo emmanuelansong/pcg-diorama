@@ -7,18 +7,7 @@ using UnityEngine;
 
 public class TreeGen : MonoBehaviour
 {
-    
-    private List<Vector3> points = new List<Vector3>();
-    [SerializeField]
-    private int count = 100;
-
-    public float radius;
-
-    private Terrain terrain;
-
-    TerrainGeneration tg;
-    [SerializeField]
-    private List<GameObject> coniferTrees;
+    //private List<GameObject> coniferTrees;
 
     private void Start()
     {
@@ -35,7 +24,7 @@ public class TreeGen : MonoBehaviour
         spawner.RespawnTerrain();
     }
 
-    private void ChooseRandomTree(RaycastHit hit)
+  /*  private void ChooseRandomTree(RaycastHit hit)
     {
         ObjectShuffler shuffler = new ObjectShuffler();
         shuffler.ShuffleList(coniferTrees);
@@ -94,7 +83,7 @@ public class TreeGen : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
 
 }

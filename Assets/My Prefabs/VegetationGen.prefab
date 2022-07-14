@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &557237984984737806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 557237984984737792}
+  - component: {fileID: 557237984984737807}
+  m_Layer: 0
+  m_Name: VegetationGen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &557237984984737792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557237984984737806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 497.56604, y: 229.4151, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &557237984984737807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557237984984737806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f710250abab6f24a954bdf3c3c1ac64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 59361
+  terrains:
+  - {fileID: 0}
+  treeTypes:
+  - enabled: 1
+    name: NMSpeedTreeSpruce_01
+    seed: 0
+    probability: 100
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 25, y: 200}
+    slopeRange: {x: 10, y: 90}
+    curvatureRange: {x: 0, y: 0.4076923}
+    layerMasks: []
+    instanceCount: 2344
+    prefabs:
+    - index: 0
+      probability: 100
+      prefab: {fileID: 100000, guid: f424ad64fb114e94b9fcfdc1fbe3e37e, type: 3}
+    distance: 7
+    scaleRange: {x: 0.79999995, y: 2}
+    sinkAmount: 0.7
+  - enabled: 1
+    name: NMSpeedTreeSpruce_02
+    seed: 0
+    probability: 54.5
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 150, y: 200}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks: []
+    instanceCount: 210
+    prefabs:
+    - index: 1
+      probability: 100
+      prefab: {fileID: 100000, guid: 842acedad65e2ef46a1561763134084e, type: 3}
+    distance: 10
+    scaleRange: {x: 1.5, y: 2}
+    sinkAmount: 0.318
+  - enabled: 1
+    name: NMSpeedTreeSpruce_03
+    seed: 0
+    probability: 90
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 50, y: 200}
+    slopeRange: {x: 0, y: 49.615383}
+    curvatureRange: {x: 0, y: 0.76}
+    layerMasks:
+    - name: Grass02
+      layerID: 1
+      threshold: 0
+    instanceCount: 1181
+    prefabs:
+    - index: 2
+      probability: 100
+      prefab: {fileID: 100000, guid: 683d119825c9397448c3936d31208b45, type: 3}
+    distance: 10
+    scaleRange: {x: 0.6461541, y: 2}
+    sinkAmount: 1
+  - enabled: 1
+    name: NMSpeedTreeSpruce_04
+    seed: 0
+    probability: 10
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 1, y: 999.99994}
+    slopeRange: {x: 0, y: 90}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks: []
+    instanceCount: 447
+    prefabs:
+    - index: 3
+      probability: 100
+      prefab: {fileID: 100000, guid: 6f5f0517a6f744c438dc1f5ecf8e9ce5, type: 3}
+    distance: 10
+    scaleRange: {x: 0.6783745, y: 1.3552973}
+    sinkAmount: 0.7
+  - enabled: 1
+    name: NMSpeedTreeSpruce_05
+    seed: 0
+    probability: 100
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 175, y: 200}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks: []
+    instanceCount: 14
+    prefabs:
+    - index: 4
+      probability: 10
+      prefab: {fileID: 100000, guid: 9dfb30b9a9ccb9c438601c9e42c907a9, type: 3}
+    distance: 23.2
+    scaleRange: {x: 0.8, y: 1.2}
+    sinkAmount: 0.1
+  - enabled: 1
+    name: NMSpeedTreeSpruce_06
+    seed: 0
+    probability: 10
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 125, y: 150}
+    slopeRange: {x: 0, y: 90}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: Grass02
+      layerID: 1
+      threshold: 0.281
+    instanceCount: 58
+    prefabs:
+    - index: 5
+      probability: 50
+      prefab: {fileID: 100000, guid: 3a1ecde72d06d0d4889dc78553d1ecf3, type: 3}
+    distance: 5
+    scaleRange: {x: 0.8, y: 1.2}
+    sinkAmount: 0.8
+  - enabled: 1
+    name: NMSpeedTreeSpruce_07
+    seed: 0
+    probability: 20
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 125, y: 200}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 0.5}
+    layerMasks: []
+    instanceCount: 121
+    prefabs:
+    - index: 6
+      probability: 20
+      prefab: {fileID: 100000, guid: 5b1fbecffd50e2f49a21dafafd2443ec, type: 3}
+    distance: 5
+    scaleRange: {x: 0, y: 2}
+    sinkAmount: 0
+  grassPrefabs: []
+  terrainSettings:
+    drawTreesAndFoliage: 1
+    perservePrefabLayer: 1
+    treeLightProbes: 0
+    treeDistance: 1000
+    billboardStart: 1000
+    maxMeshTrees: 50
+    grassDistance: 100
+    grassDensity: 1
+    windStrength: 0.15
+    windSpeed: 1
+    windFrequency: 2
+    wintTint: {r: 1, g: 1, b: 1, a: 1}
+  cellSize: 64
+  cellDivisions: 4
+  highPrecisionCollision: 1
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  terrainMinMaxHeight: {x: 0, y: 2000}
+  detailResolution: 512
+  detailResolutionIndex: 2
+  grassPatchSize: 128
+  grassPatchSizeIndex: 4
+  tempColliders: []
+  waterHeight: 0
+  autoRespawnTrees: 1

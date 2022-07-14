@@ -19,11 +19,19 @@ public class PlayerFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        RenderSettings.fog = true;
         _cameraOffset = transform.position - PlayerTransform.position;	
 	}
-	
-	// LateUpdate is called after Update methods
-	void LateUpdate () {
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            EnableFog();
+        }
+    }
+    // LateUpdate is called after Update methods
+    void LateUpdate () {
 
         if(RotateAroundPlayer)
         {
@@ -35,9 +43,6 @@ public class PlayerFollow : MonoBehaviour {
                     Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationsSpeed, Vector3.right);
 
                 _cameraOffset = camTurnAngleX * camTurnAngleY * _cameraOffset;
-
-
-
             }
         }
 
@@ -48,4 +53,20 @@ public class PlayerFollow : MonoBehaviour {
         if (LookAtPlayer || RotateAroundPlayer)
             transform.LookAt(PlayerTransform);
 	}
+
+    public void EnableFog()
+    {
+        Debug.Log("Fog Disabled");
+
+        //turn off
+        if (RenderSettings.fog == true)
+        {
+            RenderSettings.fog = false;
+        }
+        //on
+        else
+            RenderSettings.fog = true;
+        
+    }
+
 }
