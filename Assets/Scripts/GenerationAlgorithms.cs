@@ -7,7 +7,7 @@ public class GenerationAlgorithms : MonoBehaviour
 	public float radius = 1;
 	public Vector3 regionSize;
 	public int rejectionSamples = 30;
-	List<Vector3> points;
+	public List<Vector3> points;
 	public float displayRadius = .01f;
 	void OnValidate()
     {
@@ -21,13 +21,13 @@ public class GenerationAlgorithms : MonoBehaviour
         {
 			foreach(Vector3 point in points)
             {
-				Gizmos.DrawSphere(point, displayRadius);
+				Gizmos.DrawWireSphere(point, displayRadius);
 				if(Physics.Raycast(point, Vector3.down, out RaycastHit hit))
 				{
-					//Debug.Log(hit.collider.name);
-
-                    
-
+					if (hit.point.y > 0)
+					{
+						break;
+					}
                 }
             }
         }
@@ -123,7 +123,7 @@ public class GenerationAlgorithms : MonoBehaviour
 		return false;
 	}
 
-	private Vector3 RandomPointInRadius(Vector3 refPoint, float radius)
+	public Vector3 RandomPointInRadius(Vector3 refPoint, float radius)
 	{
 		Terrain terrain = Terrain.activeTerrain;
 		//Sample reference point + random offset * rad

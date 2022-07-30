@@ -1,117 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// /
-/// </summary>
+using UnityEngine.Rendering.PostProcessing;
 public class LightGenerator : MonoBehaviour
 {
-    public int count = 100;
-    public int secondCount;
-
-    public int age;
-    public Vector3 treePos;
-    public List<GameObject> tree;
-    public List<GameObject> treePlaceholder;
-    public float radius;
-
-    private List<Vector3> points = new List<Vector3>();
-    public Terrain terrain;
-    
-    
-    
-    
-    public Vector3 RandomTerrainPosition(Terrain terrain)
+    [System.Serializable]
+    public class TimeOfDay
     {
-        //Get the terrain size in all 3 dimensions
-        Vector3 terrainSize = terrain.terrainData.size;
-
-        //Choose a uniformly random x and z to sample y
-        float rX = Random.Range(0, terrainSize.x);
-        float rZ = Random.Range(0, terrainSize.z);
-
-        //Sample y at this point and put into an offset vec3
-        Vector3 sample = new Vector3(rX, 0, rZ);
-        sample.y = terrain.SampleHeight(sample);
-
-
-        //Just return terrain pos + sample offset
-        return terrain.GetPosition() + sample;
+        public string name;
+        public Vector3 rotation;
+        public bool enabled;
     }
-    public Vector3 RandomPointInRadius(Vector3 refPoint, float radius)
-    {
 
-        //Sample reference point + random offset * rad
-        var sample = refPoint + Random.insideUnitSphere * radius;
-        //Then set the y to sampled terrain height
-        sample.y = terrain.SampleHeight(sample);
-        //And return the sample!
-        return sample;
-
-    }
+    public List<TimeOfDay> times;
 
     private void Start()
     {
-        terrain = FindObjectOfType<Terrain>();
-
-        for (int i = 0; i < count; i++)
-        {
-            points.Add(RandomTerrainPosition(terrain));
-
-        }
-        for (int j = 0; j < points.Count; j++)
-        {
-
-            //Debug.Log(v3);
-            for (int i = 0; i < secondCount; i++)
-            {
-                //v3.Add(RandomPointInRadius(points[i], radius));
-                //Vector3 offset = new Vector3(v3.x, 0, v3.z);
-
-                Vector3 rot = new Vector3(0, Random.Range(0, 720), 0);
-                Vector3 scaleChange = new Vector3(Random.Range(0.5f, 2), Random.Range(0.5f, 2), Random.Range(0.5f, 2));
-
-                //prefabs[picker].transform.localScale = scaleChange;
-
-                for (int x = 0; x < tree.Count; x++)
-                {
-                    tree[x] = Instantiate(tree[x], RandomPointInRadius(points[i], radius), Quaternion.Euler(rot));
-
-                    tree[x].transform.parent = gameObject.transform;
-                    //tree[x].transform.localScale = scaleChange;
-                    cullTrees(tree[x]);
-
-                    
-                    treePlaceholder.Add(tree[x]);
-                }
-
-            }
-
-        }
-
+        SelectTimeOfDay(times);
     }
-
-    public void cullTrees(GameObject prefab)
+    void SelectTimeOfDay(List<TimeOfDay> times)
     {
-        if (!terrain.terrainData.bounds.Contains(prefab.transform.position))
-        {
-            //Debug.Log("Tree destroyed");
-            Destroy(prefab);
+        int random = Random.Range(0, times.Count);
 
-        }
+        times[random].enabled = true;
 
-
-        for (int i = 0; i < points.Count; i++)
-        {
-            //Debug.Log($"Position: ({terrain.terrainData.GetSteepness(points[i].x, points[i].y)})");
-
-            if (prefab.transform.position.y < 20)
-            {
-                Destroy(prefab);
-            }
-
-
-        }
-
+        Light light = gameObject.GetComponent<Light>();
+        RandomiseLightComponent(light, times[random]);
+   
     }
+
+    void RandomiseLightComponent(Light light, TimeOfDay time) 
+    {
+        PostProcessVolume ppv = Camera.main.GetComponent<PostProcessVolume>();
+        Bloom bloom;
+        ppv.profile.TryGetSettings(out bloom);
+
+        ColorGrading colorGrading; 
+        ppv.profile.TryGetSettings(out colorGrading);
+        light.intensity = Random.value;
+
+        if (time.enabled)
+        {
+            
+            //RenderSettings.fogColor = Color.gray;
+            
+            if (time.name == "Dawn")
+            {
+                //RenderSettings.fogColor = new Color(132, 114, 85, 1);
+                
+                light.transform.rotation = Quaternion.Euler(time.rotation);
+                colorGrading.temperature.value = (Random.Range(0f, 100f));
+            }
+            if (time.name == "Sunrise")
+            {
+                light.transform.rotation = Quaternion.Euler(time.rotation);
+                colorGrading.temperature.value = (Random.Range(-25f, 100f));
+            }
+            if (time.name == "Midday")
+            {
+                light.transform.rotation = Quaternion.Euler(time.rotation);
+                colorGrading.temperature.value = (Random.Range(0f, 25f));
+            }
+            if (time.name == "Sunset")
+            {
+                light.transform.rotation = Quaternion.Euler(time.rotation);
+                colorGrading.temperature.value = (Random.Range(-25f, 100f));
+                
+                //RenderSettings.fogColor = new Color(77, 77, 77, 1);
+            }
+            if (time.name == "Dusk")
+            {
+                light.transform.rotation = Quaternion.Euler(time.rotation);
+                colorGrading.temperature.value = (Random.Range(-25f, 0));
+            }
+            
+
+            
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+    }
+
+
 }

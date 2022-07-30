@@ -1,0 +1,11 @@
+Model Information:
+* title:	JapaneseBridge
+* source:	https://sketchfab.com/3d-models/japanesebridge-61189753e5b44107a89bc87485170343
+* author:	namnhai13 (https://sketchfab.com/namnhai13)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "JapaneseBridge" (https://sketchfab.com/3d-models/japanesebridge-61189753e5b44107a89bc87485170343) by namnhai13 (https://sketchfab.com/namnhai13) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -8,10 +8,7 @@ using LibNoise;
 using LibNoise.Generator;
 using LibNoise.Operator;
 
-
-//using UnityEngine.Rendering.PostProcessing;
-//using UnityEngine.Rendering.Universal;
-
+/* Terrain Generation */
 public class TerrainGeneration : MonoBehaviour
 {
     //The frequency of the noise
@@ -35,15 +32,11 @@ public class TerrainGeneration : MonoBehaviour
     public float layer2HeightLenience;
     public float layer2HeightAngleLenience;
 
-    public GameObject cube;
-
     private void Awake()
     {
-
-        //generate in editor
+        //generate also in editor
         generate();
 
-        
     }
 
     public void SplatMap()

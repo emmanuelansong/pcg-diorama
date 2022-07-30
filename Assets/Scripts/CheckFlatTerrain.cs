@@ -1,3 +1,4 @@
+using sc.terrain.vegetationspawner;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,23 +6,19 @@ using UnityEngine;
 public class CheckFlatTerrain : MonoBehaviour
 {
     private Terrain terrain;
-    
-    
+
+
     Ray ray;
     RaycastHit hit;
-    
-    public int count;
-    public GameObject[] trees;
-    public GameObject gameObjectsToAvoid;
-    public List<Transform> avoid = new List<Transform>();
 
+    public int count;
     //buildings
     public List<GameObject> structures;
-    
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        terrain = Terrain.activeTerrain;
         /* PillarBuilder pb = new PillarBuilder();
 
          terrain = FindObjectOfType<Terrain>();
@@ -90,11 +87,11 @@ public class CheckFlatTerrain : MonoBehaviour
                  }
              }
          }*/
-        
-        idk(count);
+
+        //idk(count);
     }
 
-   
+
     public Vector3 RandomTerrainPosition(Terrain terrain)
     {
         //Get the terrain size in all 3 dimensions
@@ -103,7 +100,7 @@ public class CheckFlatTerrain : MonoBehaviour
         //Choose a uniformly random x and z to sample y
         float rX = Random.Range(0, terrainSize.x);
         float rZ = Random.Range(0, terrainSize.z);
-        
+
         //Sample y at this point and put into an offset vec3
         Vector3 sample = new Vector3(rX, 0, rZ);
         sample.y = terrain.SampleHeight(sample);
@@ -152,13 +149,27 @@ public class CheckFlatTerrain : MonoBehaviour
 
         for (int j = 0; j < count; j++)
         {
+            int random = Random.Range(0, structures.Count);
+            float radius = structures[random].GetComponent<MeshRenderer>().bounds.size.x;
             ray = new Ray(InitialSpawnPoints()[j], Vector3.down);
 
             //raycast towards terrain
-            if (Physics.Raycast(ray, out hit, 1000))
+            if (Physics.SphereCast(ray, radius, out hit, 1000))
             {
-                Debug.Log(hit.point);
+                if (hit.point.y <= 0)
+                {
+                    Vector2 normalizedPos = terrain.GetNormalizedPosition(hit.point);
+                    float slope = terrain.GetSlope(normalizedPos, false);
+
+                    Debug.Log(slope);
+                    if (slope == 1)
+                    {
+
+                    }
+                }
             }
         }
+        
     }
+
 }

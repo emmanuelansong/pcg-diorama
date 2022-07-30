@@ -1,0 +1,11 @@
+Model Information:
+* title:	Toro Lamp
+* source:	https://sketchfab.com/3d-models/toro-lamp-71d3ef2fc97c4fd79412f0bdd09ba99c
+* author:	sidouw (https://sketchfab.com/sidouw)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Toro Lamp" (https://sketchfab.com/3d-models/toro-lamp-71d3ef2fc97c4fd79412f0bdd09ba99c) by sidouw (https://sketchfab.com/sidouw) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

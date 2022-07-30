@@ -8,6 +8,7 @@ public class CampBuilder : MonoBehaviour
     
 
     public RaycastHit hit;
+    public List<GameObject> campfires;
     public List<GameObject> campsites;
     public List<GameObject> misc;
     int noOfTents = 0;
@@ -26,7 +27,7 @@ public class CampBuilder : MonoBehaviour
         noOfMisc = Random.Range(0, 10);
 
         //every camp has a camfire in its centre
-        var campfire = Instantiate(campsites[Random.Range(0, 1)], transform.position, Quaternion.Euler(0, Random.rotation.y, 0));
+        var campfire = Instantiate(campfires[Random.Range(0, campfires.Count)], transform.position, Quaternion.Euler(0, Random.rotation.y, 0));
         campfire.transform.parent = transform;
 
         GameObject camps;

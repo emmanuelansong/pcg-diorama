@@ -1,0 +1,11 @@
+Model Information:
+* title:	Outdoor Torch
+* source:	https://sketchfab.com/3d-models/outdoor-torch-8f9ceeff9f264a2688e7280e0d379c3f
+* author:	Duznot (https://sketchfab.com/duz_vr)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Outdoor Torch" (https://sketchfab.com/3d-models/outdoor-torch-8f9ceeff9f264a2688e7280e0d379c3f) by Duznot (https://sketchfab.com/duz_vr) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
